@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    </head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="indexstylesheet.css"/>
+    <script>
+        function ValidationOfform()
+        {
+            var fname=document.getElementById("fn");
+            var lname=document.getElementById("ln");
+            var maleRadio=document.getElementById("mradio");
+            var femaleRadio=document.getElementById("fradio");
+            var fr=document.getElementById("frname");
+            var cno=document.getElementById("cn");
+            var quali=document.getElementById("qua");
+            var gmoo=document.getElementById("gm");
+            var address=document.getElementById("add");
+            var count=document.getElementById("ctry");
+
+        //check all student details are entered or not
+        if(fname.value==="")
+        {
+            alert("Please enter student first name.");
+            fname.focus();
+            return;
+        }else if(lname.value==="")
+        {
+            alert("Please enter student last name.");
+            lname.focus();
+            return;   
+        }
+        
+        else if(maleRadio.checked==true)
+            gender='mradio';
+            else 
+            gender='fradio';
+          
+         if(fr.value==="")
+        {
+            alert("Please enter father's name.");
+            fr.focus();
+            return;   
+        }else if(gen.value==="")
+        {
+            alert("Please enter gender.");
+            gen.focus();
+            return;   
+        }else if(cno.value==="")
+        {
+            alert("Please enter contact number.");
+            cno.focus();
+            return;   
+        }else if(quali.value==="")
+        {
+            alert("Please enter qualification.");
+            quali.focus();
+            return;   
+        }else if(count.selectedIndex==0)
+        {
+            alert("Please enter country.");
+            count.focus();
+            return;   
+        }else if(gm.value==="")
+        {
+            alert("Please enter g-mail.");
+            gm.focus();
+            return;   
+        }else if(address.value==="")
+        {
+            alert("Please enter address.");
+            address.focus();
+            return;   
+        }
+        }
+    </script>
+ 
+    <style type="text/css">
+        h1,h3,u
+            {
+                text-align: center; color: white;
+            }
+        div
+            {
+                margin: 0px auto; width: 48%; padding: 30px; font-size: 15px; background-color:skyblue;
+            }
+        input [type=text],option
+            {
+                width:100%; padding: 12px; margin: 8px ; display: inline-block;  font-size: 11px;
+            }
+        select
+            {
+                font-size: 15px;
+            }
+        
+        
+    </style>
+    
+</head>
+<body style="background-color:navy ;">
+    <u><h1 >Student Registration Form</h1></u>
+    <div>
+    <form action="processRegistration" method="post">
+    <label>Student Name</label><br/>
+    <label>First Name</label>    <input type="text" id="fn" name="firstname" placeholder="Enter Your First Name"/>
+    <label>Last Name</label>     <input type="text" id="ln" name="lastname" placeholder="Enter Your last Name"/><br/>
+    <label>Date Of Birth:</label><input type="date" id="dob" /><br/>
+    <label>Gender:</label><input type="radio" value="m" name="gender" checked id="mr"/><label>Male</label>
+    <input type="radio" value="f" name="gender" id="fr"/><label>Female</label><br/>
+    <label>Father's Name</label><br/> <input type="text" id="frname" name="fname" placeholder="Enter Your Father's Name"/><br/>
+    <label>Contact Number</label><br/> <input type="number" id="cn" name="Number"placeholder="Enter Your Contact Number"/><br/>
+    <label>Qualification</label><br/> <input type="text" id="qua" name="text" placeholder="Enter Your Qualification"/><br/>
+    <label>G-mail</label><br/>         <input type="email" id="gm" name="E-mail" placeholder="Enter Your G-mail"/><br/>
+    <label>Address</label><br/>   <input type="text" id="add" name="add" placeholder="Enter Your Address"/><br/>
+    <label>Country</label> <br/>        
+    <select id="ctry" name="country">
+    <option value="select">Select</option>
+    <option value="Africa">Africa</option>
+    <option value="Brazil">Brazil</option>
+    <option value="Canada">Canada</option>
+    <option value="denmark">Denmark</option>
+    <option value="egypt">Egypt</option>
+    <option value="France">France</option>
+    <option value="Georgia">Georgia</option>
+    <option value="Hungary">Hungary</option>
+    <option value="India">India</option>
+    <option value="Japan">Japan</option>
+    <option value="Kenya">Kenya</option>
+    <option value="Laos">Laos</option>
+    <option value="Mexico">Mexico</option>
+    <option value="Nepal">Nepal</option>
+    </select>
+    <br/>
+    <div>
+        <tr><button class="btn btn-success"onclick="ValidationOfform();" type="submit">Submit</button></tr>
+        <tr><button class="btn btn-danger" type="reset">Reset</button></tr>
+    </div>
+    </form>
+    </div>
+</body>
+</html>

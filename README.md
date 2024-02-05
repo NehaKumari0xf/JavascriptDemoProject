@@ -10,4 +10,6 @@ This is my demo project games using html, javascript, css. This folder contains 
 8. Radio Button and Check Condition
 9. Registration Form
 10. Stack (Push/Pop Operation)
-    
+11. Onload Property and print State, Capital Names in a Table Format
+12. Div Tag
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Friends</title>
+    <script>
+        var friends=["Anshu Mala","Neha Kumari","Rahul Kumar","rahul Raj","sheetal sinha","Kajal Kumari","Ritik Raj","sumit Kumar","Rakesh Raj","ankit Kumar"];
+
+        function addFriendList()
+        {
+            var fl1=document.getElementById("fl1");
+
+            for(var i=0;i<friends.length;i++)
+            {
+                var li=document.createElement("li");
+                var textNode=document.createTextNode(friends[i]);
+                li.appendChild(textNode);
+                fl1.appendChild(li);
+            }
+
+            var fl2=document.getElementById("fl2");
+            for(var i in friends)
+            {
+                var li=document.createElement("li");
+                var textNode=document.createTextNode(friends[i]);
+                li.appendChild(textNode);
+                fl2.appendChild(li);
+            }
+
+            var fl3=document.getElementById("fl3");
+            friends.forEach(function(name){
+                var li=document.createElement("li");
+                var textNode=document.createTextNode(name);
+                li.appendChild(textNode);
+                fl3.appendChild(li);
+            });
+            
+            friends.forEach(function(name)
+            {
+                console.log(name);
+            });
+        
+        }for(var x of friends)
+            console.log(x);//can use in arry but not in obj
+            
+            
+    </script>
+</head>
+<body onload="addFriendList();">
+    <h1>My Frineds</h1>
+    <ol id="fl1">
+    </ol>
+
+    <h1>My Friends</h1>
+    <ol id="fl2"></ol>
+
+    <h1>My Friends</h1>
+    <ol id="fl3"></ol>
+
+    <h1>My Friends</h1>
+    <p id="fl4"></p>
+    
+</body>
+</html>

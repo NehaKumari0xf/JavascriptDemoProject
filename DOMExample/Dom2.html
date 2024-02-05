@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Records</title>
+    <script>
+        var students = [{name:"Aalok kumar",gen:"m",roll:10,marks:[56,78,45,96,58]},
+                    {name:"Ravi Kumar",gen:"M",roll:11,marks:[89,23,45,69,44]},
+                    {name:"Anshu Mala",gen:"f",roll:5,marks:[89,56,36,78,56]},
+                    {name:"Rahul Raj",gen:"M",roll:17,marks:[45,86,54,58,78]},
+                    {name:"Kajal Kumari",gen:"f",roll:18,marks:[56,89,65,45,21]},
+                    {name:"Ajit Kumar",gen:"m",roll:20,marks:[56,86,69,65,45]},
+                    {name:"Anjali Kumari",gen:"f",roll:10,marks:[85,45,30,15,75]},
+                    {name:"Rakesh Kumar",gen:"m",roll:13,marks:[75,56,36,52,45]},
+                    {name:"Ritesh Kumar",gen:"m",roll:14,marks:[15,56,32,21,25]},
+                    {name:"Babita Kumari",gen:"f",roll:18,marks:[56,89,54,56,32]},
+                    {name:"Vikash Kumar",gen:"m",roll:25,marks:[45,56,32,54,56]},
+                    {name:"Ajit Kumar",gen:"m",roll:45,marks:[56,89,63,45,62]},
+                    {name:"Manish Kumar",gen:"m",roll:76,marks:[45,56,12,75,58]},
+                    {name:"Puja Kumari",gen:"f",roll:102,marks:[45,56,23,54,58]},
+                    {name:"Priyanka Kumari",gen:"f",roll:103,marks:[45,56,32,58,54]},
+                    {name:"Anjali Kumari",gen:"f",roll:120,marks:[14,25,23,36,25]},
+                    {name:"Sunil Kumar",gen:"m",roll:109,marks:[14,23,25,56,54]}];
+
+
+        function createNewElement(elementType, data) {
+            var newElement = document.createElement(elementType);
+            var newTextNode = document.createTextNode(data);
+            newElement.appendChild(newTextNode);
+            return newElement;
+        }
+
+        function onload() {
+            var thead = ["Sr_no.", "Name", "Gender", "Roll_no", "Paper1", "Paper2", "Paper3", "Paper4", "Paper5", "Total marks", "Percentage", "Division"];
+
+            var tr = document.createElement("tr");
+            thead.forEach((d) => {
+                tr.appendChild(createNewElement("th", d));
+            });
+            document.getElementById("thOutput").appendChild(tr);
+
+            var srno = 1;
+            for (let student of students) {
+                var tr = document.createElement("tr");
+                tr.appendChild(createNewElement("td", srno));
+                srno++;
+
+                for (var i in student) {
+                    if (i === "marks") {
+                        var total = 0;
+                        for (let mark of student.marks) {
+                            total += mark;
+                            tr.appendChild(createNewElement("td", mark));
+                        }
+                        var percentage = (total / 500) * 100;
+                        var division;
+                        if (percentage >= 60)
+                            division = "First";
+                        else if (percentage >= 50)
+                            division = "Second";
+                        else if (percentage >= 40)
+                            division = "Third";
+                        else
+                            division = "Fail";
+
+                        tr.appendChild(createNewElement("td", total));
+                        tr.appendChild(createNewElement("td", percentage.toFixed(2) + "%"));
+                        tr.appendChild(createNewElement("td", division));
+                    } else {
+                        tr.appendChild(createNewElement("td", student[i]));
+                    }
+                }
+                document.getElementById("tbOutput").appendChild(tr);
+            }
+        }
+        //sort by name
+        var sortByName = document.getElementById("sortByName");
+        sortByName.addEventListener("click", function () {
+            students.sort((a, b) => a.name.localeCompare(b.name));
+            onload();
+        });
+        
+        //sort by roll
+        var sortByRoll = document.getElementById("sortByRoll");
+        sortByRoll.addEventListener("click", function () {
+            students.sort((a, b) => a.roll - b.roll);
+            onload();
+        });
+    </script>
+</head>
+<body onload="onload();">
+    <h1>Student Records</h1>
+    <table id="tOutput" width="100%">
+        <thead id="thOutput">
+        </thead>
+        <tbody id="tbOutput"></tbody>
+        <tfoot id="tfOutput"></tfoot>
+    </table>
+    <button id="sortByName">Sort By Name</button>
+    <button id="sortByRoll">Sort By Roll</button>
+    <button id="sortByMarks">Sort By Marks</button>
+</body>
+</html>

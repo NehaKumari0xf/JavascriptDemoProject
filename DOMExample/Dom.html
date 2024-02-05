@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Records</title>
+    <script>
+        var data=[{Name:"Neha Kumari",Class:"B.C.A",Roll_no:58,
+                   "English":67,"Hindi":76,"Maths":78,"Science":77,"Social Science":81},
+                   {"Name":"Payal Kumari","Class":"B.C.A","Roll_no":60,
+                   "English":76,"Hindi":66,"Maths":87,"Science":66,"Social Science":80},
+                   {"Name":"Shreya Ratan","Class":"B.C.A","Roll_no":77,
+                   "English":77,"Hindi":66,"Maths":75,"Science":65,"Social Science":43},
+                   {"Name":"Shorya Singh","Class":"B.C.A","Roll_no":80,
+                   "English":80,"Hindi":54,"Maths":43,"Science":32,"Social Science":88},
+                   {"Name":"Varsha Kumari","Class":"B.C.A","Roll_no":99,
+                   "English":88,"Hindi":76,"Maths":65,"Science":87,"Social Science":54}];
+
+        function onload() 
+        {
+            var thRow=document.createElement("tr");
+            for(var fname in data[0])
+            {
+                let trHead=document.createElement("th");
+                let trhNode=document.createTextNode(fname);
+                trHead.appendChild(trhNode);
+                thRow.appendChild(trHead);
+            }   document.getElementById("thOutput").appendChild(thRow);
+        
+        var tbody=document.getElementById("tbOutput");
+        for(let dataObj of data)//array traverse and dataobj is object inside array(data)
+        {
+            let doRow=document.createElement("tr");
+            for(let obj in dataObj){
+                let dotd=document.createElement("td");
+                let dotdNode=document.createTextNode(dataObj[obj]);
+                dotd.appendChild(dotdNode);
+                doRow.appendChild(dotd);
+            }tbody.appendChild(doRow);  
+        }
+    }
+    </script>
+
+</head>
+<body onload="onload();">
+    <h1 >Students Data</h1>
+    <table id="tOutput" width="100%" style="text-align: center;">
+        <thead id="thOutput">
+
+        </thead>
+        <tbody id="tbOutput">
+
+        </tbody>
+        <tfoot id="tfOutput"></tfoot>
+    </table>
+</body>
+</html>

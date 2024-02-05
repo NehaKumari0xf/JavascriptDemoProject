@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stack Example</title>
+</head>
+<body>
+	<button onclick="push()">Push</button>
+	<button onclick="pop()">Pop</button>
+	<p>Stack: <span id="stack"></span></p>
+
+	<script>
+		var stack = [];
+
+		function push() {
+			var value = prompt("Enter a value to push:");
+			stack.push(value);
+			updateStack();
+		}
+
+		function pop() {
+			stack.pop();
+			updateStack();
+		}
+
+		function updateStack() {
+			document.getElementById("stack").innerHTML = stack.join(", ");
+		}
+	</script>
+</body>
+</html>

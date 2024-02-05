@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marksheet</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<script>
+    function calculatetmarks()
+    {
+        //access all input controls
+        var sname=document.getElementById("name");
+        var fname=document.getElementById("fname");
+        var roll=document.getElementById("roll");
+        var sec=document.getElementById("sec");
+        var clas=document.getElementById("class");//class is a keyword 
+        var maths=document.getElementById("maths");
+        var sci=document.getElementById("sci");
+        var ssci=document.getElementById("ssci");
+        var hindi=document.getElementById("hindi");
+        var eng=document.getElementById("eng");
+        var tmarks=document.getElementById("tmarks");
+        var per=document.getElementById("per");
+        var remark=document.getElementById("remark");
+        
+        //check all student details are entered or not
+        if(name.value==="")
+        {
+            alert("Please Enter student name.");
+            name.focus();
+            return;
+        }
+        
+        if(roll.value==="")
+        {
+            alert("Please Enter student roll-no.");
+            roll.focus();
+            return;
+        }
+
+        if(clas.value==="")
+        {
+            alert("Please Enter Time.");
+            clas.focus();
+            return;
+        }
+
+        //check all student obtained marks are entered or not
+        if(maths.value==="")
+        {
+            alert("Please Enter obtained marks of Maths subject");
+            maths.focus();
+            return;
+        }
+        
+        if(sci.value==="")
+        {
+            alert("Please Enter obtained marks of science subject");
+            sci.focus();
+            return;
+        }
+
+        if(ssci.value==="")
+        {
+            alert("Please Enter obtained marks of Social science subject");
+            ssci.focus();
+            return;
+        }if(hindi.value==="")
+        {
+            alert("Please Enter obtained marks of hindi subject");
+            hindi.focus();
+            return;
+        }
+        if(eng.value==="")
+        {
+            alert("Please Enter obtained marks of english subject");
+            eng.focus();
+            return;
+        }
+
+//get all subject marks , FInd toatal ,Parcentage and total
+            var hindi=parseInt(shindi.value);
+            var computer=parseInt(scomp.value);
+            var math=parseInt(smath.value);
+            var sci=parseInt(ssci.value);
+            var ssci=parseInt(sssci.value);
+            var eng=parseInt(seng.value);
+
+
+//check all entered marks is within range 
+        if(hindi>100)
+            {
+                alert("marks can't be more than 100");
+                shindi.focus();
+                return;
+            }
+        if(comp>100)
+            {
+                alert("marks can't be more than 100");
+                scompIB.focus();
+                return;
+            }
+        if(math>100)
+            {
+                alert("marks can't be more than 100");
+                smath.focus();
+                return;
+            }
+        if(sci>100)
+            {
+                alert("marks can't be more than 100");
+                ssci.focus();
+                return;
+            }
+        if(ssci>100)
+            {
+                alert("marks can't be more than 100");
+                sssci.focus();
+                return;
+            }
+        if(eng>100)
+            {
+                alert("marks can't be more than 100");
+                seng.focus();
+                return;
+            }
+
+
+        //read value from all(obtained marks of all subject) input element, convert it into float and strore in variables
+        maths=parseFloat(maths.value);
+        sci=parseFloat(ssci.value);
+        ssci=parseFloat(sssci.value);
+        hindi=parseFloat(hindi.value);
+        eng=parseFloat(eng.value);
+
+       
+        //calculate total obtained marks
+        var tomarks=maths + sci + ssci + eng + hindi;
+        //set result in total obtained marks element
+        tmarks.value=tomarks+"";
+        //calculate total percentage
+        var per=(maths + sci + ssci + eng + hindi)/5;
+        //set result in total percentage element
+        per.value=per+"";
+        //student remarks on marks performance
+        var remarks;
+            if(hindi>=30 && comp>=30 && math>=30 && sci>=30 && ssci>=30)
+            {
+                if(per>=90)
+                remarks="A+";
+                else if(per>=70)
+                remarks="A";
+                else if(per>=45)
+                remarks="B";
+                else
+                remarks="C";
+            }
+            else
+                remarks="Fail";
+        //set result in total percentage element
+        //remark.value=remarks+"";
+    }
+
+    //access all output element
+    var osname=document.getElementById("osname");
+    var ofname=document.getElementById("ofname");
+    var oclas=document.getElementById("oclas");
+    var oroll=document.getElementById("oroll");
+    var osec=document.getElementById("osec");
+    var ohindi=document.getElementById("ohindi");
+    var ocomp=document.getElementById("ocomp");
+    var omath=document.getElementById("omath");
+    var osci=document.getElementById("osci");
+    var ossci=document.getElementById("ossci");
+    var oeng=document.getElementById("oeng");
+    var otmarks=document.getElementById("otmarks");
+    var oper=document.getElementById("oper");
+    var oremarks=document.getElementById("oremarks");
+
+//set value on all output element
+    osname.innerHTML=snameIB.value.toUpperCase();
+    ofname.innerHTML=sfnameIB.value.toUpperCase();
+    oclass.innerHTML=sclassIB.value;
+    oroll.innerHTML=srollIB.value;
+    osec.innerHTML=ssecIB.value.toUpperCase();
+            
+    ohindi.innerHTML=hindi;
+        if(hindi>=75)
+        {
+            ohindi.innerHTML+=" D";
+            ohindi.style.color="black";
+        }
+        else if(hindi>=30)
+            ohindi.style.color="black";
+        else
+            ohindi.style.color="red";
+
+    ocomp.innerHTML=comp;
+        if(comp>=75)
+            {
+                ocomp.innerHTML+=" D";
+                ocomp.style.color="black";
+            }
+         else if(comp>=30)
+            ocomp.style.color="black";
+        else
+            ocomp.style.color="red";
+
+    omath.innerHTML=math;
+         if(math>=75)
+            {
+                omath.innerHTML+=" D";
+                omath.style.color="black";
+            }
+        else if(math>=30)
+            omath.style.color="black";
+        else
+            omath.style.color="red";
+
+    osci.innerHTML=scie;
+        if(scie>=75)
+            {
+                osci.innerHTML+=" D";
+                osci.style.color="black";
+            }
+        else if(science>=30)
+            osci.style.color="black";
+        else
+            osci.style.color="red";
+
+    ossci.innerHTML=sscience;
+        if(ssci>=75)
+            {
+                ossci.innerHTML+=" D";
+                ossci.style.color="black";
+            }
+        else if(ssci>=30)
+                ossci.style.color="black";
+        else
+                ossci.style.color="red";
+
+    oeng.innerHTML=eng;
+        if(eng>=75)
+            {
+                oeng.innerHTML+=" D";
+                oeng.style.color="black";
+            }
+        else if(eng>=30)
+            oeng.style.color="black";
+        else
+            oeng.style.color="red";
+
+    otmarks.innerHTML=total;
+    oper.innerHTML=per+" %";
+    oremarks.innerHTML=remarks;
+
+// hide the input row and show the output row
+    document.getElementById("inputrow").style.display="none";
+    document.getElementById("outputrow").style.display="block";
+        
+    function editResult()
+        {
+//1. hide the output row and show the input row
+        document.getElementById("inputrow").style.display="block";
+        document.getElementById("outputrow").style.display="none";
+        }
+    function resettmarks()
+    {
+        //set empty string in all input element
+        document.getElementById("name").value="";
+        document.getElementById("fname").value="";
+        document.getElementById("class").value="";
+        document.getElementById("roll").value="";
+        document.getElementById("sec").value="";
+        document.getElementById("maths").value="";
+        document.getElementById("eng").value="";
+        document.getElementById("hindi").value="";
+        document.getElementById("ssci").value="";
+        document.getElementById("sci").value="";
+        document.getElementById("comp").value="";
+        document.getElementById("tmarks").value="";
+        document.getElementById("percentage").value="";
+        document.getElementById("remark").value="";
+  
+    }
+
+</script>
+
+</head>
+<body>
+    <h1 style="background-color:teal;color: antiquewhite ;text-align: center;">Marksheet</h1><br/>
+    <h3>Enter student details:-</h3><hr/><br/>
+    <label for="name">Enter name:</label><input type="text" id="name" placeholder="Name"/><br/><br/>
+    <label for="fname">Enter Fther's name:</label><input type="text" id="fname" placeholder="Father's name"/><br/><br/>
+    <label for="class">Enter Class:</label><input type="number" id="class" placeholder="Class"/><br/><br/>
+    <label for="roll">Enter roll-no:</label><input type="number" id="roll" placeholder="roll-no"/><br/><br/>
+    <label for="sec">Enter secton:</label><input type="number" id="sec" placeholder="section"/><br/><br/>
+    <h3>Enter student obtained marks in given subject:-</h3><hr/><br/>
+    <label for="maths">Enter obtained marks in Maths:</label><input type="number" id="maths" placeholder="Obtained Marks"/><br/><br/>
+    <label for="sci">Enter obtained marks in Science:</label><input type="number" id="sci" placeholder="Obtained Marks"/><br/><br/>
+    <label for="ssci">Enter obtained marks in Social Science:</label><input type="number" id="ssci" placeholder="Obtained Marks"/><br/><br/>
+    <label for="hindi">Enter obtained marks in Hindi:</label><input type="number" id="hindi" placeholder="Obtained Marks"/><br/><br/>
+    <label for="eng">Enter obtained marks in English:</label><input type="number" id="eng" placeholder="Obtained Marks"/><br/><br/>
+    <label for="comp">Enter obtained marks in Computer:</label><input type="number" id="comp" placeholder="Obtained Marks"/><br/><br/>
+    <label for="tmarks">Calculate total obtained marks in all given subjct:</label><input type="number" id="tmarks" readonly placeholder="Total Obtained"/>
+    <button type="button"  style="color:blue ;" onclick="calculatetmarks();">Calculate</button>
+    <button type="button" style="color:green ;" onclick="resettmarks()">Reset</button><br/><br/>
+    <label for="per">Calculate total percentage in all given subjct:</label><input type="number" id="per" readonly placeholder="Total percentage"/>
+    <button type="button"  style="color:blue ;" onclick="calculatepercentage();">Calculate</button>
+    <button type="button" style="color:green ;" onclick="resettmarks()">Reset</button><br/><br/>
+    <label for="remarks">Remark of student:</label><input type="number" id="remarks" readonly placeholder="Remark"/>
+    <button type="button"  style="color:blue ;" onclick="remarks();">Calculate</button>
+    <button type="button" style="color:green ;" onclick="resettmarks()">Reset</button>
+    
+
+<!--Output Row-->
+    <remarks class="row" id="outputrow" style="display:none">
+        <remarks class="col-sm-12">
+            <remarks class="row text-center">
+                <remarks class="col-sm-12">
+                    <h1>|| Gyan Bharti Public School, Gaya ||</h1>
+                    <h4>Marks Statement</h4><hr/>
+                </remarks>
+            </remarks>
+            <remarks class="row">
+                <remarks class="col-sm-2"></remarks>
+                    <remarks class="col-sm-8">
+                        <table class="table table-default">
+                            <tbody>
+                                <tr><th>Student's Name:</th><td colspan="3" id="oname">student name will appear haere!</td></tr>
+                                <tr><th>Father's Name:</th><td colspan="3" id="ofname">father's name will appear here!</td></tr>
+                                <tr><th>Class</th><td colspan="3" id="oclass">class will appear here!</td></tr>
+                                <tr>
+                                    <th>Section:</th><td id="osec">Section will appear here!</td>
+                                    <th>Roll:</th><td id="oroll">Roll Will Appear Here!</td>
+                                </tr>
+                                <tr class="bg-primary">
+                                    <th>Subject Name</th>
+                                    <th>Full Marks</th>
+                                    <th>Pass Marks</th>
+                                    <th>Obtained Marks</th>
+                                </tr>
+                                <tr>
+                                    <th>Hindi</th>
+                                    <td>100</td>
+                                    <td>30</td>
+                                    <td id="ohindi">HindiMArks</td>
+                                </tr>
+                                <tr>
+                                    <th>Computer</th>
+                                    <td>100</td>
+                                    <td>30</td>
+                                    <td id="ocomp">ComputerMArks</td>
+                                </tr>
+                                <tr>
+                                    <th>Math</th>
+                                    <td>100</td>
+                                    <td>30</td>
+                                    <td id="omath">MathMArks</td>
+                                </tr>
+                                <tr>
+                                    <th>Science</th>
+                                    <td>100</td>
+                                    <td>30</td>
+                                    <td id="osci">ScienceMArks</td>
+                                </tr>
+                                <tr>
+                                    <th>Social Science</th>
+                                    <td>100</td>
+                                    <td>30</td>
+                                    <td id="ossci">SScienceMArks</td>
+                                </tr>
+                                <tr>
+                                    <th>English</th>
+                                    <td>100</td>
+                                    <td>30</td>
+                                    <td id="oeng">EnglishMArks</td>
+                                </tr>
+                                <tr class="bg-primary">
+                                    <th>Total</th>
+                                    <th>500</th>
+                                    <th>150</th>
+                                    <th id="otmarks">Total Marks</th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">Percentage</th>
+                                    <th colspan="2" id="oper">percentageValue</th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">remarksision</th>
+                                    <th colspan="2" id="oremarks">remarksValue</th>
+                                </tr>                
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th><br/><br/><br/>Class teacher Signature</th>
+                                    <th><br/><br/><br/>Parents Sigature</th>
+                                    <th colspan="2"><br/><br/><br/>Principal Signature</th>
+                                </tr>
+                            </tfoot>
+                        </table>                        
+                    </remarks>
+                    <remarks class="col-sm-2"></remarks>
+                    </remarks>
+                    <remarks class="row">
+                        <remarks class="col-sm-12 text-center">
+                            <button class="btn btn-success" onclick="editResult();">Edit</button>
+                            <button class="btn btn-primary" onclick="createAnother();">Create Another</button>
+                        </remarks>
+                    </remarks>
+                </remarks>
+            </remarks>
+        </remarks>    
+</body>
+</html>

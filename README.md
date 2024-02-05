@@ -1,5 +1,5 @@
 # JavascriptDemoProject
-This is my demo project games using html, javascript, css. This folder contains many demo project like:-
+This is my demo projects using HTML, JAVASCRIPT, CSS, BOOTSTRAP. This folder contains many demo projects like.
 1. DOM Example
 2. Date Animation
 3. Dropdown and DateAnimation

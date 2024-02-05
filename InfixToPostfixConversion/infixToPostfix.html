@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Infix to Postfix Converter</title>
+</head>
+<body>
+	<form>
+		<label for="infix">Enter an infix expression:</label>
+		<input type="text" id="infix" name="infix">
+		<button type="button" onclick="convert()">Convert</button>
+		<p>Postfix: <span id="postfix"></span></p>
+	</form>
+
+	<script>
+		function convert() {
+			var infix = document.getElementById("infix").value;
+			var outputQueue = [];
+			var operatorStack = [];
+
+			// Define operator precedence
+			var precedence = {
+				"+": 1,
+				"-": 1,
+				"*": 2,
+				"/": 2,
+				"^": 3
+			};
+
+			// Split infix expression into tokens
+			var tokens = infix.split(/\s+/);
+
+			// Loop through tokens
+			for (var i = 0; i < tokens.length; i++) {
+				var token = tokens[i];
+
+				// If token is a number, add it to the output queue
+				if (!isNaN(token)) {
+					outputQueue.push(token);
+				}
+				// If token is an operator
+				else if (token in precedence) {
+					while (operatorStack.length > 0 && operatorStack[operatorStack.length - 1] in precedence && precedence[token] <= precedence[operatorStack[operatorStack.length - 1]]) {
+						outputQueue.push(operatorStack.pop());
+					}
+					operatorStack.push(token);
+				}
+				// If token is a left parenthesis, push it onto the operator stack
+				else if (token === "(") {
+					operatorStack.push(token);
+				}
+				// If token is a right parenthesis, pop operators off the stack and add them to the output queue until a left parenthesis is found
+				else if (token === ")") {
+					while (operatorStack[operatorStack.length - 1] !== "(") {
+						outputQueue.push(operatorStack.pop());
+					}
+					operatorStack.pop(); // Remove the left parenthesis from the stack
+				}
+			}
+
+			// Pop remaining operators off the stack and add them to the output queue
+			while (operatorStack.length > 0) {
+				outputQueue.push(operatorStack.pop());
+			}
+
+			// Join the output queue into a space-separated string and display it in the HTML
+			document.getElementById("postfix").innerHTML = outputQueue.join(" ");
+		}
+	</script>
+</body>
+</html>

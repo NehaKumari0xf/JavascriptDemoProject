@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script>
+        function loadData()
+        {
+        var data=[
+        ["srno","state Name","Capital Name","Governor Name","CM Name"],
+        ["01","Bihar","Patna","Phagu Chauhan","Nitish Kumar"],
+        ["02","Uttar Pradesh (UP)","Lucknow","Anandiben Patel","Yogi Adityanath"],
+        ["03","Madhya Pradesh (MP)","Bhopal","Mangubhai C. Patel","Shivraj Singh Chouhan"],
+        ["04","Punjab","Chandigarh","Banwarilal Purohit","Bhagwant Mann"],
+        ["05","Kerla","Thiruvananthapuram","Arif Mohammad Khan","Pinarayi Vijayan"],
+        ["06","Nagaland","Kohima","Jagdish Mukhi","Neiphiu Rio"],
+        ["07","Goa","Panaji","PS Sreedharam Pillai","Pramod Sawant"],
+        ["08","Rajasthan","Jaipur","Kalarj Mishra","Ashok Gehlot"],
+        ["09","Maharashtra","Mumbai","Bhagat Singh Koshyan","Eknath Sindhe"],
+        ["10","Karnataka","Bengaluru","Thawar Chand Gehlot","B.S.Yediyurappa"],
+        ["11","Gujrat","Gandhinagar","Acharya Devvrat","Bhupendrabhai Patel"],
+        ["12","Tamil Nadu","Chennai","Shri.R.N.Ravi","M.K.Stalin"],
+        ["13","Andhra Pradesh","Amaravati","Biswabhusan Harichandan","Y.S.Jagan Mohan Reddy"],
+        ["14","Uttarakhand","Gairsan &#x2219; Dehrahun","Lt. Gen. Gurmit Singh, PVSM, UYSM, AVSM, VSM (Retd.)","Pushkar Singh Dhami"],
+        ["15","Haryana","Chandigarh","Bandaru Dattatreya","Manohar Lal Khattar"],
+        ["16","Telanagana","Hyderabad","Dr Tamilisai Sounedararajan ","K. Chandrashekhar Rao"],
+        ["17","West Bangal","Kolkata","Jagdeep Dhankar","Mamata Banerjee "],
+        ["18","Assam","Dispur","Prof. Jagdish Mukhi ","Himanta Biswa Sarma"],
+        ["19","Chhattisgarh","NayaRaipur/Bilaspur","Anusuiya Uikey ","Bhupesh Bhagel"],
+        ["20","Odisha","Bhubaneswar","Prof. Ganeshi Lal Mathur ","Naveen Patnaik"],
+        ["21","Meghalaya","Shillong","Satya Pal Malik", "Conrad Kongkal Sangma"],
+        ["22","Himachal Pradesh","Shimla &#x2219; Dharamshala","Rajendra Vishwanath Arlekar","Jai Ram Thakur Jhark"],
+        ["23","Jharkhand","Ranchi","Ramesh Bais","Hemant Soren"],
+        ["24","Sikkim","Gangtok","Ganga Prasad","Prem Singh Tamang"],
+        ["25","Manipur","Imphal","La. Ganesan","N. Biren Singh"],
+        ["26","Arunachal Pradesh","Itanagar","Brigadier B.D Mishra (Retd) ","Pema Khandu "],
+        ["27","Tripura","Agartala",,"Satyadev Narayan Arya",,"Manik Saha"],
+        ["28","Mizoram","Aizawal","Dr. Kambhampati Haribabu","Zoramthanga"],   
+    ];
+    
+    
+var tdata="";
+var i,j;
+tdata='<table class="table table-hover"><thead><tr>';
+    for(i=0;i<5;i+=1)
+    tdata=tdata+'<th>'+data[0][i]+'</th>';
+    tdata=tdata+"</thead><tbody>";
+        for(i=1;i<27;i+=1)
+        {
+            tdata+='<tr>';
+                for(j=0;j<=4;j++)
+                {
+                    //if(j==4||j==6)
+                    //tdata+='<td><img src="'+data[i][j]+'" style="width:100px;height:100px;border-radius:100px"/></td>';
+                    //else
+                    tdata+='<td>'+data[i][j]+'</td>';
+                }
+                tdata+="</tr>";
+        }
+        tdata=tdata+"</tbody></table>";
+        var c=document.getElementById("tablediv");
+        c.innerHTML=tdata;
+    }
+    </script>
+</head>
+<body>
+      <div class="container-fluid">
+           <div class="row">
+                <div class="cols-sm-12 bg-warning text-center">
+                    <h1>Indian States Capital, CM &amp; Governers</h1>
+                </div>
+           </div>
+           <div class="row">
+                <div class="col-sm-12 text-center ">
+                    <button class="btn btn-primary" onclick="loadData();">Load Data</button>
+                </div>
+           </div>
+           <div class="row">
+                <div class="col-sm-12" id="tablediv">
+                </div>
+            </div>  
+        </div>
+</body>
+</html>
